@@ -15,7 +15,7 @@ void start()
 
 void adb_baze()
 {
- cout<<"ADB PULL"<<endl;
+ cout<<"ADB - BAZE"<<endl;
     
     char direktorij[255]; //polje
     getcwd(direktorij,255); 
@@ -31,7 +31,7 @@ void adb_baze()
 
 void adb_sdcard()
 {
-    cout<<"ADB PULL"<<endl;
+    cout<<"ADB - SD CARD"<<endl;
     
     char direktorij[255]; //polje
     getcwd(direktorij,255); 
@@ -42,10 +42,17 @@ void adb_sdcard()
     string prevzem = adbpull+lokacija;
     
     //system ("adb pull /data/local/storage/persistent/chrome/idb/ C:\\FirefoxOSforenzika\\adbPull\\ ");
-   system ( prevzem.c_str() );
-   // system("adb devices"); // pokaži vse naprave
+    system ( prevzem.c_str() );
+    //system("adb devices"); // pokaži vse naprave
     
-    system ("pause");     
+     string shell ("adb shell");
+     string dodatek (" ls -lR storage/sdcard");
+  // string izpis (" > /files.txt");
+     string skupaj = shell+dodatek;
+     system (skupaj.c_str());
+   
+
+   system ("pause");     
 }
 
 void kopiraj()
@@ -127,6 +134,7 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
                <<"|  (2) Prenesi baze iz naprave     |"<<endl
                <<"|  (3) Prenesi datoteke iz naprave |"<<endl
                <<"|  (4) Preglej baze                |"<<endl
+               <<"|  (5) Izhod iz programa           |"<<endl
                <<"------------------------------------"<<endl;
            
            cout<<"Vnesi izbiro: ";
