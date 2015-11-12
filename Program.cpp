@@ -36,21 +36,46 @@ void adb_sdcard()
     char direktorij[255]; //polje
     getcwd(direktorij,255); 
     char a = direktorij[0];
+    
+    int os;
+    cout<<"-------------------------------"<<endl
+        <<"|  (1) Firefox OS: 1.0 - 2.1  |"<<endl
+        <<"|  (2) Firefox OS: 2.2 - 2.5  |"<<endl
+        <<"-------------------------------"<<endl;
+    cout<<"Izberi verzijo operacijskega sistema:"<<endl;
+    cin>>os;
+    
+    if(os == 1)
+    {
+          string adbpull = string ("adb pull /mnt/ ");
+          string lokacija = a+ string(":/FirefoxOSforenzika/SDCARD/");
+          string prevzem = adbpull+lokacija; 
+          system ( prevzem.c_str() );
+          
+          string shell ("adb shell");
+          string dodatek (" ls -lR mnt/ >");
+          string izpis = a+ string(":/FirefoxOSforenzika/files.txt");
+          string skupaj = shell+dodatek+izpis;
+          system (skupaj.c_str());
+    }
+    
+    if (os == 2)
+    {
+          string adbpull = string ("adb pull /storage/ ");
+          string lokacija = a+ string(":/FirefoxOSforenzika/SDCARD/");
+          string prevzem = adbpull+lokacija; 
+          system ( prevzem.c_str() );
+  
+          string shell ("adb shell");
+          string dodatek (" ls -lR storage/sdcard >");
+          string izpis = a+ string(":/FirefoxOSforenzika/files.txt");
+          string skupaj = shell+dodatek+izpis;
+          system (skupaj.c_str());
+    }
 
-    string adbpull = string ("adb pull /storage/ ");
-    string lokacija = a+ string(":/FirefoxOSforenzika/SDCARD/");
-    string prevzem = adbpull+lokacija;
-    
     //system ("adb pull /data/local/storage/persistent/chrome/idb/ C:\\FirefoxOSforenzika\\adbPull\\ ");
-    system ( prevzem.c_str() );
-    //system("adb devices"); // pokaži vse naprave
     
-     string shell ("adb shell");
-     string dodatek (" ls -lR storage/sdcard");
-  // string izpis (" > /files.txt");
-     string skupaj = shell+dodatek;
-     system (skupaj.c_str());
-   
+    //system("adb devices"); // pokaži vse naprave
 
    system ("pause");     
 }
