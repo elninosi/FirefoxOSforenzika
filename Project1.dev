@@ -1,6 +1,6 @@
 [Project]
 FileName=Project1.dev
-Name=Project1
+Name=Firefox OS Forenzika
 UnitCount=1
 Type=1
 Ver=1
@@ -17,8 +17,8 @@ IsCpp=1
 Icon=Project1.ico
 ExeOutput=
 ObjectOutput=
-OverrideOutput=0
-OverrideOutputName=Project1.exe
+OverrideOutput=1
+OverrideOutputName=Firefox OS Forenzika.exe
 HostApplication=
 Folders=
 CommandLine=
