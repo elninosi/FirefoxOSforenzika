@@ -9,9 +9,10 @@ void start()
      getcwd(direktorij,255); 
      char a = direktorij[0];  
     
-          string firefox = string (":/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
-          string zagon = a+firefox; 
-          system ( zagon.c_str() ); 
+          string firefox =a+ string (":/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///");
+          string stran =a+ string (":/FirefoxOSforenzika/index.html");
+          string zagon = firefox+stran; 
+          system ( zagon.c_str() );  
              
  //system("C:/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
 }
