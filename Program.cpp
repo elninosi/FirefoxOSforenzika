@@ -5,7 +5,15 @@
 
 void start()
 {
- system("C:/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
+     char direktorij[255]; 
+     getcwd(direktorij,255); 
+     char a = direktorij[0];  
+    
+          string firefox = string (":/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
+          string zagon = a+firefox; 
+          system ( zagon.c_str() ); 
+             
+ //system("C:/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
 }
 
 void adb_baze()
@@ -217,7 +225,7 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
                  kopiraj();
                  break;
             default:
-                cout<<"Napacna izbira"<<endl;
+                cout<<"Neveljavna izbira"<<endl;
             case 0:
                  cout<<"Izhod iz programa"<<endl;
             }
