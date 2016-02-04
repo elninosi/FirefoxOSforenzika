@@ -20,13 +20,46 @@ void adb_baze()
     char direktorij[255]; //polje
     getcwd(direktorij,255); 
     char a = direktorij[0];
-
-    string adbpull = string ("adb pull /data/local/storage/persistent/ ");
-    string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
-    string prevzem = adbpull+lokacija;
+    
+        int os;
+    cout<<"-------------------------------"<<endl
+        <<"|  (1) Firefox OS: 1.0 - 1.4  |"<<endl
+        <<"|  (2) Firefox OS: 2.0 - 2.2  |"<<endl
+        <<"|  (3) Firefox OS: 2.2 - 2.5+ |"<<endl
+        <<"-------------------------------"<<endl;
+    cout<<"Izberi verzijo operacijskega sistema:"<<endl;
+    cin>>os;
+    
+    if(os == 1)
+    {
+        string adbpull = string ("adb pull /data/local/indexedDB/ ");
+        string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
+        string prevzem = adbpull+lokacija;
+        system ( prevzem.c_str() );
+    }
+    
+    if(os == 2)
+    {
+        string adbpull = string ("adb pull /data/local/storage/persistent/ ");
+        string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
+        string prevzem = adbpull+lokacija;
+        system ( prevzem.c_str() );
+    }
+    
+    if(os == 3)
+    {
+        string adbpull = string ("adb pull /data/local/storage/ ");
+        string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
+        string prevzem = adbpull+lokacija;
+        system ( prevzem.c_str() );
+    }
+    else 
+    {
+     cout<<"Nepravilen vnos."<<endl; 
+    } 
     
     //system ("adb pull /data/local/storage/persistent/chrome/idb/ C:\\FirefoxOSforenzika\\adbPull\\ ");
-   system ( prevzem.c_str() ); 
+
 }
 
 void adb_sdcard()
@@ -40,7 +73,7 @@ void adb_sdcard()
     int os;
     cout<<"-------------------------------"<<endl
         <<"|  (1) Firefox OS: 1.0 - 2.1  |"<<endl
-        <<"|  (2) Firefox OS: 2.2 - 2.5  |"<<endl
+        <<"|  (2) Firefox OS: 2.2 - 2.5+ |"<<endl
         <<"-------------------------------"<<endl;
     cout<<"Izberi verzijo operacijskega sistema:"<<endl;
     cin>>os;
@@ -72,7 +105,10 @@ void adb_sdcard()
           string skupaj = shell+dodatek+izpis;
           system (skupaj.c_str());
     }
-
+    else 
+    {
+     cout<<"Nepravilen vnos."<<endl; 
+    }
     //system ("adb pull /data/local/storage/persistent/chrome/idb/ C:\\FirefoxOSforenzika\\adbPull\\ ");
     
     //system("adb devices"); // pokaži vse naprave
@@ -85,7 +121,7 @@ void kopiraj()
 if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Datoteke"))
           {
             cout<<"Pozdravljeni nazaj!"<<endl<<endl;
-            cout<<"V mapo Datoteke kopirajte datoteke za analizo."<<endl;
+            cout<<"V mapo 'Datoteke' kopirajte datoteke za analizo."<<endl;
             system("pause");                                       
           }
           else
@@ -155,11 +191,13 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
       do
        {
            cout<<"------------------------------------"<<endl
-               <<"|  (1) Preglej naprave             |"<<endl
-               <<"|  (2) Prenesi baze iz naprave     |"<<endl
-               <<"|  (3) Prenesi datoteke iz naprave |"<<endl
-               <<"|  (4) Preglej baze                |"<<endl
-               <<"|  (5) Izhod iz programa           |"<<endl
+               <<"|  (1) Pridobi pravice             |"<<endl
+               <<"|  (2) Preglej naprave             |"<<endl
+               <<"|  (3) Prenesi baze iz naprave     |"<<endl
+               <<"|  (4) Prenesi datoteke iz naprave |"<<endl
+               <<"|  (5) Preglej baze                |"<<endl
+               <<"|----------------------------------|"<<endl
+               <<"|  (0) Izhod iz programa           |"<<endl
                <<"------------------------------------"<<endl;
            
            cout<<"Vnesi izbiro: ";
@@ -169,24 +207,27 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
            switch(izbira)
             {
             case 1:
+                 system("adb root");
+                 break;
+            case 2:
                 system("adb devices");
                 break;
-            case 2:
+            case 3:
                 adb_baze();
                 break;
-            case 3:
+            case 4:
                 adb_sdcard();
                 break;
-            case 4:
+            case 5:
                  kopiraj();
                  break;
             default:
                 cout<<"Napacna izbira"<<endl;
-            case 5:
+            case 0:
                  cout<<"Izhod iz programa"<<endl;
             }
        }
-       while(izbira!=5);
+       while(izbira!=0);
              
           
           system("pause");
