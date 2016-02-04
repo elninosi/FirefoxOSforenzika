@@ -3,11 +3,6 @@
    #include <windows.h>
    using namespace std;
 
-void stop()
-{
- system("TASKKILL /F /IM Firefox.exe /T"); 
-}
-
 void start()
 {
  system("C:/FirefoxOSforenzika/FirefoxPortable/FirefoxOS_forenzika.exe -no-remote file:///C:/FirefoxOSforenzika/index.html");
