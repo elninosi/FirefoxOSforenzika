@@ -122,28 +122,36 @@ void adb_sdcard()
 
 void kopiraj()
 {
-if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Datoteke"))
-          {
-            cout<<"Pozdravljeni nazaj!"<<endl<<endl;
-            cout<<"V mapo 'Datoteke' kopirajte datoteke za analizo."<<endl;
-            system("pause");                                       
-          }
-          else
-          {
-              cout<<"Kreiranje mape za vhodne podatke."<<endl;
-              mkdir("C:/FirefoxOSforenzika/Datoteke");
-              cout<<"V mapo Datoteke kopirajte datoteke za analizo."<<endl;
+
+              if (mkdir("/FirefoxOSforenzika1/Datoteke") == 0)
+              {
+                 cout<<"Mapa za vhodne podatke je bila izbrisana - ponovno kreiranje ... \n"<<endl;
+                 mkdir("/FirefoxOSforenzika1/Datoteke");
+                 cout<<"V mapo 'Datoteke' kopirajte datoteke za analizo."<<endl;
+              }              
+              else
+              {
+               cout<<"Mapa obstaja"<<endl;
+              }
+              
               system("pause");
-          }
-          
-          if(mkdir("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html") == mkdir("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html"))
-          {
-                                                                                                           
+         // }
+         
+            if (mkdir("/FirefoxOSforenzika1/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/") == 0)
+            {
+                cout<<"Datoteka 'file++++C++FirefoxOSforenzika+index.html' ne obstaja - ponovno kreiranje ... \n"<<endl;
+                mkdir("/FirefoxOSforenzika1/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb/");        
+            }
+                                                                                                    
           cout<<"Zacetek kopiranja:"<<endl;
           
+          char direktorij[255]; 
+          getcwd(direktorij,255); 
+          char a = direktorij[0];  
+          
                                  string 
-                                 source = string("C:/FirefoxOSforenzika/Datoteke"),
-                                 destiny = string("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
+                                 source =a+ string(":/FirefoxOSforenzika1/Datoteke"),
+                                 destiny =a+ string(":/FirefoxOSforenzika1/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
                                  source = string("\"") + source + string("\"");
                                  destiny = string("\"") + destiny + string("\"");
                                  string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s");
@@ -152,44 +160,11 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
           system("pause");
           cout<<"Odpri podatke?"<<endl<<endl;
           system("pause");                   
-          start(); 
-          }
-          
-          else
-          {
-          cout<<"Ni ujemanja, kopiram potrebne datoteke."<<endl;
-          mkdir("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
-                                 
-                                 string 
-                                 source = string("C:/FirefoxOSforenzika/file++++C++FirefoxOSforenzika+index.html"),
-                                 destiny = string("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html");
-                                 source = string("\"") + source + string("\"");
-                                 destiny = string("\"") + destiny + string("\"");
-                                 string command = string("xcopy") + string(" ") + source + string(" ") + destiny;
-                                 system( command.c_str() );
-                           
-                                 string 
-                                 source1 = string("C:/FirefoxOSforenzika/file++++C++FirefoxOSforenzika+index.html/idb"),
-                                 destiny1 = string("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
-                                 source1 = string("\"") + source1 + string("\"");
-                                 destiny1 = string("\"") + destiny1 + string("\"");
-                                 string command1 = string("xcopy") + string(" ") + source1 + string(" ") + destiny1;
-                                 system( command1.c_str() );
-          
-                                 string 
-                                 source2 = string("C:/FirefoxOSforenzika/Datoteke"),
-                                 destiny2 = string("C:/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
-                                 source2 = string("\"") + source2 + string("\"");
-                                 destiny2 = string("\"") + destiny2 + string("\"");
-                                 string command2 = string("xcopy") + string(" ") + source2 + string(" ") + destiny2;
-                                 system( command2.c_str() );
-                                 start();
-          }
-     
+          start();      
 }
 
-    int main()
-    {     
+int main()
+{     
           int izbira;
           cout<<"Program za Forenziko - Firefox OS"<<endl;
       do
@@ -232,9 +207,8 @@ if (mkdir("C:/FirefoxOSforenzika/Datoteke") == mkdir("C:/FirefoxOSforenzika/Dato
             }
        }
        while(izbira!=0);
-             
-          
-          system("pause");
-    }
+               
+       system("pause");
+}
     
     
