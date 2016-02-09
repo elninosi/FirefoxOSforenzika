@@ -33,6 +33,8 @@ void adb_baze()
         <<"-------------------------------"<<endl;
     cout<<"Izberi verzijo operacijskega sistema:"<<endl;
     cin>>os;
+    cin.clear();
+           cin.ignore(1000,'\n'); //clear buffer to prevent infinite loop
     
     if(os == 1)
     {
@@ -42,7 +44,7 @@ void adb_baze()
         system ( prevzem.c_str() );
     }
     
-    if(os == 2)
+   else if(os == 2)
     {
         string adbpull = string ("adb pull /data/local/storage/persistent/ ");
         string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
@@ -50,7 +52,7 @@ void adb_baze()
         system ( prevzem.c_str() );
     }
     
-    if(os == 3)
+    else if(os == 3)
     {
         string adbpull = string ("adb pull /data/local/storage/ ");
         string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
@@ -96,7 +98,7 @@ void adb_sdcard()
           system (skupaj.c_str());
     }
     
-    if (os == 2)
+   else if (os == 2)
     {
           string adbpull = string ("adb pull /storage/ ");
           string lokacija = a+ string(":/FirefoxOSforenzika/SDCARD/");
@@ -140,9 +142,9 @@ void kopiraj()
             }
             else 
             {   
-                cout<<"Brisanje predhodnih datotek ..."<<endl;
+                cout<<"Brisanje predhodnih datotek ... \n"<<endl;
                 system("rmdir /s \\FirefoxOSforenzika\\FirefoxPortable\\Data\\profile\\storage\\default\\file++++C++FirefoxOSforenzika+index.html\\");
-                  
+                cout<<"\n"<<endl;  
             }
           cout<<"V mapo 'Datoteke' kopirajte datoteke za analizo. \n"<<endl;  
           system("pause");                                                                                        
@@ -159,8 +161,8 @@ void kopiraj()
                                  destiny = string("\"") + destiny + string("\"");
                                  string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s");
                                  system( command.c_str() );
-          cout<<"Kopiranje koncano."<<endl<<endl;
-          cout<<"Odpiranje podatkov ..."<<endl<<endl;
+          cout<<"Kopiranje koncano.\n"<<endl;
+          cout<<"Odpiranje podatkov ...\n"<<endl;
           system("pause");                   
           start();      
 }
@@ -182,8 +184,10 @@ int main()
                <<"------------------------------------"<<endl;
            
            cout<<"Vnesi izbiro: ";
-           cin>>izbira;
+           cin>>izbira;         
            cout<<"\n";
+           cin.clear();
+           cin.ignore(1000,'\n'); //clear buffer to prevent infinite loop
                      
            switch(izbira)
             {
@@ -202,15 +206,16 @@ int main()
             case 5:
                  kopiraj();
                  break;
-            default:
-                cout<<"Neveljavna izbira"<<endl;
+            default:  
+                cout<<"Neveljavna izbira. \n"<<endl;
             case 0:
                  cout<<"Izhod iz programa"<<endl;
             }
        }
-       while(izbira!=0);
-               
+        while(izbira!=0);
+           
        system("pause");
+       return 0;
 }
     
     
