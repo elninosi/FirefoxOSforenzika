@@ -179,6 +179,7 @@ int main()
                <<"|  (3) Prenesi baze iz naprave     |"<<endl
                <<"|  (4) Prenesi datoteke iz naprave |"<<endl
                <<"|  (5) Preglej baze                |"<<endl
+               <<"|  (6) Odpri Firefox OS Forenzika  |"<<endl
                <<"|----------------------------------|"<<endl
                <<"|  (0) Izhod iz programa           |"<<endl
                <<"------------------------------------"<<endl;
@@ -205,6 +206,9 @@ int main()
                 break;
             case 5:
                  kopiraj();
+                 break;
+             case 6:
+                 start();
                  break;
             default:  
                 cout<<"Neveljavna izbira. \n"<<endl;
