@@ -173,16 +173,16 @@ int main()
           cout<<"Program za Forenziko - Firefox OS"<<endl;
       do
        {
-           cout<<"------------------------------------"<<endl
-               <<"|  (1) Pridobi pravice             |"<<endl
-               <<"|  (2) Preglej naprave             |"<<endl
-               <<"|  (3) Prenesi baze iz naprave     |"<<endl
-               <<"|  (4) Prenesi datoteke iz naprave |"<<endl
-               <<"|  (5) Preglej baze                |"<<endl
-               <<"|  (6) Odpri Firefox OS Forenzika  |"<<endl
-               <<"|----------------------------------|"<<endl
-               <<"|  (0) Izhod iz programa           |"<<endl
-               <<"------------------------------------"<<endl;
+           cout<<"---------------------------------------"<<endl
+               <<"|  (1) Pridobi pravice                |"<<endl
+               <<"|  (2) Preglej naprave                |"<<endl
+               <<"|  (3) Prenesi baze iz naprave        |"<<endl
+               <<"|  (4) Prenesi datoteke iz naprave    |"<<endl
+               <<"|  (5) Preglej baze                   |"<<endl
+               <<"|  (6) Odpri pregledovalnik Firefox   |"<<endl
+               <<"|-------------------------------------|"<<endl
+               <<"|  (0) Izhod iz programa              |"<<endl
+               <<"---------------------------------------"<<endl;
            
            cout<<"Vnesi izbiro: ";
            cin>>izbira;         
