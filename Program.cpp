@@ -167,6 +167,58 @@ void kopiraj()
           start();      
 }
 
+void adb_backupData()
+{
+    start();
+    //cout<<"ADB - Backup App Data"<<endl;
+    
+    char direktorij[255]; //polje
+    getcwd(direktorij,255); 
+    char a = direktorij[0];
+    
+    int os;
+    cout<<"-------------------------------"<<endl
+        <<"|  (1) Firefox OS: 1.0 - 2.1  |"<<endl
+        <<"|  (2) Firefox OS: 2.2 - 2.5+ |"<<endl
+        <<"-------------------------------"<<endl;
+    cout<<"Izberi verzijo operacijskega sistema:"<<endl;
+    cin>>os;
+    
+    if(os == 1)
+    {
+          string adbpull_contacts = string ("adb pull /mnt/sdcard/backup-contacts.html ");
+          string lokacija_contacts = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_contacts = adbpull_contacts+lokacija_contacts; 
+          system ( prevzem_contacts.c_str() );
+          
+          string adbpull_messages = string ("adb pull /mnt/sdcard/backup-messages.html ");
+          string lokacija_messages = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_messages = adbpull_messages+lokacija_messages; 
+          system ( prevzem_messages.c_str() );
+          
+          string adbpull_WIFI = string ("adb pull /mnt/sdcard/backup-WIFI.html ");
+          string lokacija_WIFI = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_WIFI = adbpull_WIFI+lokacija_WIFI; 
+          system ( prevzem_WIFI.c_str() );
+          
+          start();
+    }
+       else if (os == 2)
+    {
+          string adbpull = string ("adb pull /storage/ ");
+          string lokacija = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem = adbpull+lokacija; 
+          system ( prevzem.c_str() );
+          
+          start();
+    }
+    else 
+    {
+     cout<<"Nepravilen vnos."<<endl; 
+    }
+   system ("pause");     
+}
+
 int main()
 {     
           int izbira;
@@ -208,7 +260,7 @@ int main()
                  kopiraj();
                  break;
              case 6:
-                 start();
+                 adb_backupData();
                  break;
             default:  
                 cout<<"Neveljavna izbira. \n"<<endl;
