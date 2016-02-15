@@ -202,6 +202,21 @@ void adb_backupData()
           system ( prevzem_WIFI.c_str() );
           
           start();
+          
+          string shell_contacts ("adb shell");
+          string ukaz_contacts (" rm /mnt/sdcard/backup-contacts.html ");
+          string skupaj_contacts = shell_contacts+ukaz_contacts;
+          system (skupaj_contacts.c_str());
+          
+          string shell_messages ("adb shell");
+          string ukaz_messages (" rm /mnt/sdcard/backup-messages.html ");
+          string skupaj_messages = shell_messages+ukaz_messages;
+          system (skupaj_messages.c_str());
+          
+          string shell_WIFI ("adb shell");
+          string ukaz_WIFI(" rm /mnt/sdcard/backup-WIFI.html ");
+          string skupaj_WIFI = shell_messages+ukaz_WIFI;
+          system (skupaj_WIFI.c_str());
     }
        else if (os == 2)
     {
@@ -209,7 +224,7 @@ void adb_backupData()
           string lokacija = a+ string(":/FirefoxOSforenzika/BackupAppData");
           string prevzem = adbpull+lokacija; 
           system ( prevzem.c_str() );
-          
+          // TODO: fix za novejše verzije
           start();
     }
     else 
