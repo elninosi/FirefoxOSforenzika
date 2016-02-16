@@ -27,14 +27,14 @@ void adb_baze()
     
         int os;
     cout<<"-------------------------------"<<endl
-        <<"|  (1) Firefox OS: 1.0 - 1.4  |"<<endl
-        <<"|  (2) Firefox OS: 2.0 - 2.2  |"<<endl
+        <<"|  (1) Firefox OS: 1.0 - 1.2  |"<<endl
+        <<"|  (2) Firefox OS: 1.3 - 2.2  |"<<endl
         <<"|  (3) Firefox OS: 2.2 - 2.5+ |"<<endl
         <<"-------------------------------"<<endl;
     cout<<"Izberi verzijo operacijskega sistema:"<<endl;
     cin>>os;
     cin.clear();
-           cin.ignore(1000,'\n'); //clear buffer to prevent infinite loop
+    cin.ignore(1000,'\n'); //clear buffer to prevent infinite loop
     
     if(os == 1)
     {
