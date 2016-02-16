@@ -159,7 +159,7 @@ void kopiraj()
                                  destiny =a+ string(":/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
                                  source = string("\"") + source + string("\"");
                                  destiny = string("\"") + destiny + string("\"");
-                                 string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s");
+                                 string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s /i");
                                  system( command.c_str() );
           cout<<"Kopiranje koncano.\n"<<endl;
           cout<<"Odpiranje podatkov ...\n"<<endl;
