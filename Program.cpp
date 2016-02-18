@@ -180,8 +180,10 @@ void adb_backupData()
     cout<<"-------------------------------"<<endl
         <<"|  (1) Firefox OS: 1.0 - 2.1  |"<<endl
         <<"|  (2) Firefox OS: 2.2 - 2.5+ |"<<endl
+        <<"-------------------------------"<<endl
+        <<"|  (0) Nazaj na glavni meni   |"<<endl
         <<"-------------------------------"<<endl;
-    cout<<"Izberi verzijo operacijskega sistema:"<<endl;
+    cout<<"Izberi opcijo:"<<endl;
     cin>>os;
     
     if(os == 1)
@@ -218,7 +220,7 @@ void adb_backupData()
           string skupaj_WIFI = shell_messages+ukaz_WIFI;
           system (skupaj_WIFI.c_str());
     }
-       else if (os == 2)
+    else if (os == 2)
     {
           string adbpull = string ("adb pull /storage/ ");
           string lokacija = a+ string(":/FirefoxOSforenzika/BackupAppData");
@@ -226,6 +228,10 @@ void adb_backupData()
           system ( prevzem.c_str() );
           // TODO: fix za novejše verzije
           start();
+    }
+    else if (os == 0)
+    {
+         //cout<<"Vracanje na glavni meni"<<endl;
     }
     else 
     {
