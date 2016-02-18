@@ -222,12 +222,37 @@ void adb_backupData()
     }
     else if (os == 2)
     {
-          string adbpull = string ("adb pull /storage/ ");
-          string lokacija = a+ string(":/FirefoxOSforenzika/BackupAppData");
-          string prevzem = adbpull+lokacija; 
-          system ( prevzem.c_str() );
-          // TODO: fix za novejše verzije
+          string adbpull_contacts = string ("adb pull /storage/sdcard0/backup-contacts.html ");
+          string lokacija_contacts = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_contacts = adbpull_contacts+lokacija_contacts; 
+          system ( prevzem_contacts.c_str() );
+          
+          string adbpull_messages = string ("adb pull /storage/sdcard0/backup-messages.html ");
+          string lokacija_messages = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_messages = adbpull_messages+lokacija_messages; 
+          system ( prevzem_messages.c_str() );
+          
+          string adbpull_WIFI = string ("adb pull /storage/sdcard0/backup-WIFI.html ");
+          string lokacija_WIFI = a+ string(":/FirefoxOSforenzika/BackupAppData");
+          string prevzem_WIFI = adbpull_WIFI+lokacija_WIFI; 
+          system ( prevzem_WIFI.c_str() );
+          
           start();
+          
+          string shell_contacts ("adb shell");
+          string ukaz_contacts (" rm /storage/sdcard0/backup-contacts.html ");
+          string skupaj_contacts = shell_contacts+ukaz_contacts;
+          system (skupaj_contacts.c_str());
+          
+          string shell_messages ("adb shell");
+          string ukaz_messages (" rm /storage/sdcard0/backup-messages.html ");
+          string skupaj_messages = shell_messages+ukaz_messages;
+          system (skupaj_messages.c_str());
+          
+          string shell_WIFI ("adb shell");
+          string ukaz_WIFI(" rm /storage/sdcard0/backup-WIFI.html ");
+          string skupaj_WIFI = shell_messages+ukaz_WIFI;
+          system (skupaj_WIFI.c_str());
     }
     else if (os == 0)
     {
