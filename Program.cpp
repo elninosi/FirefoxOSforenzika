@@ -29,7 +29,7 @@ void adb_baze()
     cout<<"-------------------------------"<<endl
         <<"|  (1) Firefox OS: 1.0 - 1.2  |"<<endl
         <<"|  (2) Firefox OS: 1.3 - 2.2  |"<<endl
-        <<"|  (3) Firefox OS: 2.2 - 2.5+ |"<<endl
+        <<"|  (3) Firefox OS: 2.5+       |"<<endl
         <<"-------------------------------"<<endl;
     cout<<"Izberi verzijo operacijskega sistema:"<<endl;
     cin>>os;
@@ -54,7 +54,7 @@ void adb_baze()
     
     else if(os == 3)
     {
-        string adbpull = string ("adb pull /data/local/storage/ ");
+        string adbpull = string ("adb pull /data/local/storage ");
         string lokacija = a+ string(":/FirefoxOSforenzika/adbPull/");
         string prevzem = adbpull+lokacija;
         system ( prevzem.c_str() );
@@ -137,7 +137,7 @@ void kopiraj()
               
             if (mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/") == 0)
             {
-                cout<<"Datoteka 'file++++C++FirefoxOSforenzika+index.html' ne obstaja - ponovno kreiranje ... \n"<<endl;
+                cout<<"Mapa 'file++++C++FirefoxOSforenzika+index.html' ne obstaja - ponovno kreiranje ... \n"<<endl;
                 mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb/");        
             }
             else 
