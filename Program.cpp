@@ -83,6 +83,8 @@ void adb_sdcard()
         <<"-------------------------------"<<endl;
     cout<<"Izberi verzijo operacijskega sistema:"<<endl;
     cin>>os;
+    cin.clear();
+    cin.ignore(1000,'\n');
     
     if(os == 1)
     {
@@ -124,28 +126,27 @@ void adb_sdcard()
 
 void kopiraj()
 {
-              if (mkdir("/FirefoxOSforenzika/Datoteke") == 0)
-              {
-                 cout<<"Mapa za vhodne podatke je bila izbrisana - ponovno kreiranje ... \n"<<endl;
-                 mkdir("/FirefoxOSforenzika/Datoteke");
-                 
-              }              
-              else
-              {
-               //cout<<"Mapa obstaja"<<endl;
-              }
+    if (mkdir("/FirefoxOSforenzika/Datoteke") == 0)
+     {
+      cout<<"Mapa za vhodne podatke je bila izbrisana - ponovno kreiranje ... \n"<<endl;
+      mkdir("/FirefoxOSforenzika/Datoteke");    
+     }              
+    else
+     {
+        //cout<<"Mapa obstaja"<<endl;
+     }
               
-            if (mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/") == 0)
-            {
-                cout<<"Mapa 'file++++C++FirefoxOSforenzika+index.html' ne obstaja - ponovno kreiranje ... \n"<<endl;
-                mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb/");        
-            }
-            else 
-            {   
-                cout<<"Brisanje predhodnih datotek ... \n"<<endl;
-                system("rmdir /s \\FirefoxOSforenzika\\FirefoxPortable\\Data\\profile\\storage\\default\\file++++C++FirefoxOSforenzika+index.html\\");
-                cout<<"\n"<<endl;  
-            }
+     if (mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/") == 0)
+     {
+        cout<<"Mapa 'file++++C++FirefoxOSforenzika+index.html' ne obstaja - ponovno kreiranje ... \n"<<endl;
+        mkdir("/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb/");        
+     }
+     else 
+     {   
+         cout<<"Brisanje predhodnih datotek ... \n"<<endl;
+         system("rmdir /s \\FirefoxOSforenzika\\FirefoxPortable\\Data\\profile\\storage\\default\\file++++C++FirefoxOSforenzika+index.html\\");
+         cout<<"\n"<<endl;  
+     }
           cout<<"V mapo 'Datoteke' kopirajte datoteke za analizo. \n"<<endl;  
           system("pause");                                                                                        
           cout<<"Zacetek kopiranja:"<<endl;
@@ -154,13 +155,14 @@ void kopiraj()
           getcwd(direktorij,255); 
           char a = direktorij[0];  
           
-                                 string 
-                                 source =a+ string(":/FirefoxOSforenzika/Datoteke"),
-                                 destiny =a+ string(":/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
-                                 source = string("\"") + source + string("\"");
-                                 destiny = string("\"") + destiny + string("\"");
-                                 string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s /i");
-                                 system( command.c_str() );
+          string 
+          source =a+ string(":/FirefoxOSforenzika/Datoteke"),
+          destiny =a+ string(":/FirefoxOSforenzika/FirefoxPortable/Data/profile/storage/default/file++++C++FirefoxOSforenzika+index.html/idb");
+          source = string("\"") + source + string("\"");
+          destiny = string("\"") + destiny + string("\"");
+          string command = string("xcopy") + string(" ") + source + string(" ") + destiny + string(" /s /i");
+          system( command.c_str() );
+          
           cout<<"Kopiranje koncano.\n"<<endl;
           cout<<"Odpiranje podatkov ...\n"<<endl;
           system("pause");                   
